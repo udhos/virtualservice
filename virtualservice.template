@@ -1,0 +1,18 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: {{serviceName}}
+  namespace: {{namespace}}
+  labels:
+    managed-by: repository-name
+spec:
+  hosts:
+  - {{serviceName}}
+  http:
+  - rewrite:
+      uri: "{{prefix}}"
+    route:
+    - destination:
+        host: {{serviceName}}
+        port:
+          number: {{servicePort}}

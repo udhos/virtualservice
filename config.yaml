@@ -1,0 +1,6 @@
+service1:
+  port: 1111
+service2:
+  port: 2222
+  prefix: /other-prefix/svc2/
+  namespace: other-ns
