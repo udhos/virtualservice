@@ -35,7 +35,7 @@ get_config() {
         port=$(echo $i | awk -F, '{print $3}')
         prefix=$(echo $i | awk -F, '{print $4}')
 
-        [ "$prefix" == null ] && prefix=$service
+        [ "$prefix" == null ] && prefix="/$service/"
         [ "$namespace" == null ] && namespace=$NAMESPACE
 
         echo "$namespace,$service,$port,$prefix"
