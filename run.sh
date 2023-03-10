@@ -64,6 +64,8 @@ apply() {
             -e "s|{{prefix}}|$prefix|g" \
             -e "s|{{servicePort}}|$port|g" \
             -e "s|{{namespace}}|$namespace|g" \
+            -e "s|{{labelKey}}|$LABEL_KEY|g" \
+            -e "s|{{labelValue}}|$LABEL_VALUE|g" \
             < $template_virtualservice > $tmp
         kubectl apply -f $tmp
     done
