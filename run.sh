@@ -61,7 +61,7 @@ apply() {
 
         msg "APPLY: namespace:service:port:prefix = $namespace:$service:$port:$prefix"
 
-        tmp=$tmp_dir/virtualservice.yaml.$service
+        tmp=$tmp_dir/virtualservice.yaml.$namespace.$service
         sed \
             -e "s|{{serviceName}}|$service|g" \
             -e "s|{{prefix}}|$prefix|g" \
