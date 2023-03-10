@@ -25,12 +25,9 @@ LABEL_VALUE=$LABEL_VALUE
 
 EOF
 
-mkdir -p $tmp_dir
-
 #
-# Create virtual services
+# parse configuration
 #
-
 get_config() {
     cat $config | gojq -r --yaml-input 'keys[] as $k | "\(.[$k] | .namespace),\($k),\(.[$k] | .port),\(.[$k] | .prefix)"' | while read i; do
         namespace=$(echo $i | awk -F, '{print $1}')
@@ -96,6 +93,8 @@ delete() {
 #
 # main
 #
+
+mkdir -p $tmp_dir
 
 msg "## 1/4: parsing config: $config"
 curr_config=$tmp_dir/config
